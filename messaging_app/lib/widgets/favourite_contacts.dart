@@ -12,7 +12,8 @@ class FavouriteContacts extends StatefulWidget {
 class _FavouriteContactsState extends State<FavouriteContacts> {
   Map<String, String> dataMap = {'Sam': 'Sam.jpg'};
 
-  @override Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -56,9 +57,8 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                   //     builder: (_) => ChatScreen(
                   //       user: favorites[index],
                   //     ),
-                    // ),
-                
-                  
+                  // ),
+
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Column(

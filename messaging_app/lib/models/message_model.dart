@@ -6,7 +6,7 @@ class Message {
       time; // Would usually be type DateTime or Firebase Timestamp in production apps
   final String text;
   final bool isLiked;
-  final bool unread;
+  late final bool unread;
 
   Message({
     required this.sender,
@@ -27,7 +27,7 @@ final User currentUser = User(
 
 final User jacob = User(
   id: 1,
-  name: 'Balvant',
+  name: 'Jacob',
   imageUrl: 'assets/Jacob.jpg',
 );
 final User patrick = User(
