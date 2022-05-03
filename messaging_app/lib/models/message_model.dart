@@ -6,7 +6,7 @@ class Message {
       time; // Would usually be type DateTime or Firebase Timestamp in production apps
   final String text;
   final bool isLiked;
-  late final bool unread;
+  late bool unread;
 
   Message({
     required this.sender,
@@ -15,6 +15,19 @@ class Message {
     required this.isLiked,
     required this.unread,
   });
+
+  Map toJson(Message message) => {
+
+        'sender':{
+          'name':sender.name,
+          'id':sender.id,
+          'imageUrl':sender.imageUrl
+        },
+        'time': message.time,
+        'text': message.text,
+        'isLiked': message.isLiked,
+        'unread': message.unread,
+      };
 }
 
 // YOU - current user

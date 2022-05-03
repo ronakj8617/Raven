@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -21,6 +22,20 @@ class _ChatScreenState extends State<ChatScreen> {
     for (var i = 0; i < chats.length; i++) {
       if (chats[i].sender.id == widget.user.id && chats[i].unread) {
         log('message');
+        Message tempMesage = Message(
+            sender: chats[i].sender,
+            time: chats[i].time,
+            text: chats[i].text,
+            isLiked: chats[i].isLiked,
+            unread: false);
+        chats.removeAt(i);
+        // log(chats[i].text);
+        var test=tempMesage.toJson(tempMesage);
+        var check=jsonEncode(test);
+        log(check);
+
+         chats.insert(chats.length , tempMesage);
+        // chats[i] = tempMesage;
         // chats[i].unread=false;
       }
     }
