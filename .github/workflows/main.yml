@@ -16,7 +16,7 @@ jobs:
         # Build Website
         - name: Build Website
           run: |
-            cd my_app
+            cd messaging_app
             flutter channel dev
             flutter upgrade
             flutter config --enable-web
