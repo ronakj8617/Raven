@@ -8,4 +8,8 @@ class User {
     required this.name,
     required this.imageUrl,
   });
+
+  Map toJson(User user) => {
+        'sender': {'name': user.name, 'id': user.id, 'imageUrl': user.imageUrl}
+      };
 }

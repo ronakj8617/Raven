@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:messaging_app/models/message_model.dart';
@@ -112,22 +111,30 @@ class _ChatScreenState extends State<ChatScreen> {
       // print('Path of New Dir: ' + directory.path);
     });
 
-    var file = File(appDocDirectory.path + '/chats/chats.json');
+    var chatsFile = File(appDocDirectory.path + '/chats/chats.json');
+    var userFile = File(appDocDirectory.path + '/chats/users.json');
 
-    log('File: ' + file.toString());
+    if (userFile.exists() != true) {
+      userFile.create();
+    }
+    if (chatsFile.exists() != true) {
+      chatsFile.create();
+    }
+    
+    log('File: ' + chatsFile.toString());
     final SecurityContext context = SecurityContext.defaultContext;
     // String crtPath = await _getLocalFile("client.crt");
     // context.setTrustedCertificates(file.path);
 
-    file.readAsString().then((value) => log(value));
+    chatsFile.readAsString().then((value) => log(value));
 
     // final data = await json.decode(response);
     setState(() {
       // _items = data["items"];
     });
 
-    List dataItems = [];
-    List check = [];
+    List userList = [];
+    List chatsList = [];
     for (var i = 0; i < chats.length; i++) {
       // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
 
@@ -138,11 +145,19 @@ class _ChatScreenState extends State<ChatScreen> {
           text: chats[i].text,
           isLiked: chats[i].isLiked,
           unread: false);
+
+      User user = User(
+          id: chats[i].sender.id,
+          name: chats[i].sender.name,
+          imageUrl: chats[i].sender.imageUrl);
       // chats.removeAt(i);
       // log(chats[i].text);
-      dataItems.add(tempMesage);
-      var test = tempMesage.toJson(tempMesage);
-      check.add(jsonEncode(test));
+      var encodeChats = tempMesage.toJson(tempMesage);
+      var encodeUsers = user.toJson(user);
+      // check.add(jsonEncode(test));
+      chatsList.add(encodeChats);
+      userList.add(encodeUsers);
+
       // log(check);
 
       // chats.insert(chats.length, tempMesage);
@@ -151,12 +166,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
     }
 
-    // file.writeAsString(check.add());
-   check.forEach((element) { file
-        .writeAsString(element)
-        .then((value) => log(value.toString()))
-        .onError((error, stackTrace) => print(error));});
+    // log('Check: ' + check.toString());
 
+    chatsFile.writeAsStringSync(jsonEncode(chatsList));
+    userFile.writeAsStringSync(jsonEncode(userList));
+
+    // file.writeAsStringSync(check);
+    // file.writeAsString(check.add());
+    //  check.forEach((element) { file
+    //       .writeAsString(element)
+    //       .then((value) => log(value.toString()))
+    //       .onError((error, stackTrace) => print(error));});
 
     // file.readAsString().then((value) => log(value));
     // _items.forEach((element) {log(element['id']);});
