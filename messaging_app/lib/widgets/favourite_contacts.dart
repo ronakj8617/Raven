@@ -1,8 +1,17 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:messaging_app/models/message_model.dart';
+import 'package:path_provider/path_provider.dart';
+
+import '../models/user_model.dart';
 
 class FavouriteContacts extends StatefulWidget {
+  static List userData=[];
+
   const FavouriteContacts({Key? key}) : super(key: key);
 
   @override
@@ -11,9 +20,50 @@ class FavouriteContacts extends StatefulWidget {
 
 class _FavouriteContactsState extends State<FavouriteContacts> {
   Map<String, String> dataMap = {'Sam': 'Sam.jpg'};
+  late String directory;
+  File file = File('');
+  var chatsFile, userFile;
+  static var userData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _listofFiles();
+    getFileLength();
+
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => getFileLength());
+  }
+
+  void _listofFiles() async {
+    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+
+    new Directory(appDocDirectory.path + '/chats')
+        .create(recursive: true)
+        .then((Directory directory) {
+      // print('Path of New Dir: ' + directory.path);
+    });
+
+    chatsFile = File(appDocDirectory.path + '/chats/chats.json');
+    userFile = File(appDocDirectory.path + '/chats/users.json');
+
+    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+    log(directory);
+    setState(() {
+      // file = Directory("$directory")
+      //     .listSync(); //use your folder name insted of resume.
+
+      file = File(directory + '/chats.json');
+    });
+
+    // log(file.readAsStringSync());
+  }
 
   @override
   Widget build(BuildContext context) {
+    log('build');
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -46,13 +96,14 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
           Container(
             height: 120.0,
             child: ListView.builder(
+              
               padding: EdgeInsets.only(left: 10.0),
               scrollDirection: Axis.horizontal,
-              itemCount: favorites.length,
+              itemCount: FavouriteContacts.userData.length,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   // onTap: () => Navigator.push(
-                  //   context,
+                  //   context,Ï
                   //   MaterialPageRoute(
                   //     builder: (_) => ChatScreen(
                   //       user: favorites[index],
@@ -66,11 +117,11 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                         CircleAvatar(
                           radius: 35.0,
                           backgroundImage:
-                              AssetImage(favorites[index].imageUrl),
+                              AssetImage(FavouriteContacts.userData[index]['sender']['imageUrl']),
                         ),
                         SizedBox(height: 6.0),
                         Text(
-                          favorites[index].name,
+                          FavouriteContacts.userData[index]['sender']['name'],
                           style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16.0,
@@ -87,5 +138,51 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
         ],
       ),
     );
+  }
+
+  getFileLength() async {
+    _listofFiles();
+    log('getfile');
+    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+
+    new Directory(appDocDirectory.path + '/chats')
+        .create(recursive: true)
+        .then((Directory directory) {
+      // print('Path of New Dir: ' + directory.path);
+    });
+
+    chatsFile = File(appDocDirectory.path + '/chats/chats.json');
+    userFile = File(appDocDirectory.path + '/chats/users.json');
+
+    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+    // log(directory);
+
+    setState(() {
+      // file = Directory("$directory")
+      //     .listSync(); //use your folder name insted of resume.
+
+      file = File(directory + '/user.json');
+    });
+    final String test = chatsFile.toString();
+    // log(test);
+
+    // var check=User.fromJson(file.readAsLinesSync().first);
+    // log(file.readAsStringSync());
+    List userData = [];
+
+    userData = await jsonDecode(userFile.readAsStringSync());
+    // log(data.toString());
+    // log(userData[0]['sender']['name']);
+
+    // log(file.toString());
+
+    // log(data.name);
+
+    FavouriteContacts.userData = userData;
+    // log('message' + userData.runtimeType.toString());
+    if(FavouriteContacts.userData==null){
+      getFileLength();
+    }
+    return userData;
   }
 }
