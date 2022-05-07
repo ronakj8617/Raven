@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {},
         ),
         title: Text(
-          'Chats 1.1.1',
+          'Chats 1.1.2',
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,

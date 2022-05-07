@@ -1,10 +1,37 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:messaging_app/chat_screen.dart';
 import 'package:messaging_app/models/message_model.dart';
+import 'package:messaging_app/models/user_model.dart';
+import 'package:messaging_app/widgets/recent_chats.dart';
+import 'package:path_provider/path_provider.dart';
 
-class RecentChats extends StatelessWidget {
+class RecentChats extends StatefulWidget {
+  static List recentChatData = [];
+
+  static int recentChatDataCount = 0;
+
+  @override
+  State<RecentChats> createState() => _RecentChatsState();
+}
+
+class _RecentChatsState extends State<RecentChats> {
+  File file = File('');
+
+  File recentChatsFile = File('');
+
+  late String directory;
+
+  @override
+  void initState(){
+    super.initState();
+
+    initializeChatData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,9 +49,20 @@ class RecentChats extends StatelessWidget {
             topRight: Radius.circular(30.0),
           ),
           child: ListView.builder(
-            itemCount: chats.length,
+            itemCount: RecentChats.recentChatDataCount,
             itemBuilder: (BuildContext context, int index) {
-              final Message chat = chats[index];                
+               final User user = User(
+                          id: RecentChats.recentChatData[index]['sender']['id'],
+                          name: RecentChats.recentChatData[index]['sender']['name'],
+                          imageUrl: RecentChats.recentChatData[index]['sender']
+                              ['imageUrl']);
+                      final Message chat = Message(
+                          sender: user,
+                          time: RecentChats.recentChatData[index]['time'],
+                          text: RecentChats.recentChatData[index]['text'],
+                          isLiked: RecentChats.recentChatData[index]['isLiked'],
+                          unread: RecentChats.recentChatData[index]['unread']);
+              // final Message chat = ;
               return GestureDetector(
                 onTap: () => Navigator.push(
                   context,
@@ -124,5 +162,35 @@ class RecentChats extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  initializeChatData() async {
+    // log('getfile');
+    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+
+    new Directory(appDocDirectory.path + '/chats')
+        .create(recursive: true)
+        .then((Directory directory) {});
+
+    recentChatsFile = File(appDocDirectory.path + '/chats/chats.json');
+
+    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+
+    file = File(directory + '/user.json');
+
+    List recentChatData = [];
+    recentChatData = await jsonDecode(recentChatsFile.readAsStringSync());
+
+    RecentChats.recentChatData  = recentChatData;
+    // log(ChatScreen.chatData.toString());
+    if (RecentChats.recentChatData == null) {
+      initializeChatData();
+    }
+    if (RecentChats.recentChatData.isNotEmpty)
+      RecentChats.recentChatDataCount = RecentChats.recentChatData.length;
+    else
+      initializeChatData();
+
+    return RecentChats.recentChatDataCount;
   }
 }

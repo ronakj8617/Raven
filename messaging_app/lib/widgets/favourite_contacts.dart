@@ -28,41 +28,17 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
   @override
   void initState() {
     super.initState();
-
-    _listofFiles();
-    getFileLength();
+    
+    initializeUserData();
 
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => getFileLength());
-  }
-
-  void _listofFiles() async {
-    Directory appDocDirectory = await getApplicationDocumentsDirectory();
-
-    new Directory(appDocDirectory.path + '/chats')
-        .create(recursive: true)
-        .then((Directory directory) {
-      // print('Path of New Dir: ' + directory.path);
-    });
-
-    chatsFile = File(appDocDirectory.path + '/chats/chats.json');
-    userFile = File(appDocDirectory.path + '/chats/users.json');
-
-    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
-    log(directory);
-    setState(() {
-      // file = Directory("$directory")
-      //     .listSync(); //use your folder name insted of resume.
-
-      file = File(directory + '/chats.json');
-    });
-
-    // log(file.readAsStringSync());
+        .addPostFrameCallback((_) => initializeUserData());
   }
 
   @override
   Widget build(BuildContext context) {
-    log('build');
+    // log('build');f
+
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -140,9 +116,8 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
     );
   }
 
-  getFileLength() async {
-    _listofFiles();
-    log('getfile');
+  initializeUserData() async {
+    // log('getfile');
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
     new Directory(appDocDirectory.path + '/chats')
@@ -163,7 +138,6 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
 
       file = File(directory + '/user.json');
     });
-    final String test = chatsFile.toString();
     // log(test);
 
     // var check=User.fromJson(file.readAsLinesSync().first);
@@ -181,7 +155,7 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
     FavouriteContacts.userData = userData;
     // log('message' + userData.runtimeType.toString());
     if(FavouriteContacts.userData==null){
-      getFileLength();
+      initializeUserData();
     }
     return userData;
   }

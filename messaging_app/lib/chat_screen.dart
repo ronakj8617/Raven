@@ -10,7 +10,8 @@ import 'package:path_provider/path_provider.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
-
+  static List messageData = [];
+  static int messageDataCount = 0;
   ChatScreen({required this.user});
 
   @override
@@ -22,6 +23,9 @@ class _ChatScreenState extends State<ChatScreen> {
 
   bool _fileExists = false;
   File? _filePath;
+  late String directory;
+  File file = File('');
+  File messagesFile = File('');
 
   // First initialization of _json (if there is no json in the file)
   Map<String, dynamic> _json = {};
@@ -98,13 +102,13 @@ class _ChatScreenState extends State<ChatScreen> {
   // Fetch content from the json file
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('assets/chats.json');
-    log('Response: ' + response);
+    // log('Response: ' + response);
 
     final test = rootBundle.loadString('assets/chats.json');
-    log('test');
+    // log('test');
 
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
-    log('Parent: ' + appDocDirectory.parent.path);
+    // log('Parent: ' + appDocDirectory.parent.path);
     new Directory(appDocDirectory.path + '/chats')
         .create(recursive: true)
         .then((Directory directory) {
@@ -113,6 +117,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     var chatsFile = File(appDocDirectory.path + '/chats/chats.json');
     var userFile = File(appDocDirectory.path + '/chats/users.json');
+    var messageFile = File(appDocDirectory.path + '/chats/messsages.json');
 
     if (userFile.exists() != true) {
       userFile.create();
@@ -120,13 +125,13 @@ class _ChatScreenState extends State<ChatScreen> {
     if (chatsFile.exists() != true) {
       chatsFile.create();
     }
-    
-    log('File: ' + chatsFile.toString());
+
+    // log('File: ' + chatsFile.toString());
     final SecurityContext context = SecurityContext.defaultContext;
     // String crtPath = await _getLocalFile("client.crt");
     // context.setTrustedCertificates(file.path);
 
-    chatsFile.readAsString().then((value) => log(value));
+    // chatsFile.readAsString().then((value) => log(value));
 
     // final data = await json.decode(response);
     setState(() {
@@ -135,6 +140,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
     List userList = [];
     List chatsList = [];
+    List messageList = [];
+
     for (var i = 0; i < chats.length; i++) {
       // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
 
@@ -144,7 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
           time: chats[i].time,
           text: chats[i].text,
           isLiked: chats[i].isLiked,
-          unread: false);
+          unread: chats[i].unread);
 
       User user = User(
           id: chats[i].sender.id,
@@ -152,6 +159,7 @@ class _ChatScreenState extends State<ChatScreen> {
           imageUrl: chats[i].sender.imageUrl);
       // chats.removeAt(i);
       // log(chats[i].text);
+      log(tempMesage.text.toString());
       var encodeChats = tempMesage.toJson(tempMesage);
       var encodeUsers = user.toJson(user);
       // check.add(jsonEncode(test));
@@ -166,10 +174,41 @@ class _ChatScreenState extends State<ChatScreen> {
 
     }
 
+    for (var i = 0; i < messages.length; i++) {
+      // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
+
+      // log('message');
+      Message tempMesage = Message(
+          sender: messages[i].sender,
+          time: messages[i].time,
+          text: messages[i].text,
+          isLiked: messages[i].isLiked,
+          unread: messages[i].unread);
+
+      User user = User(
+          id: messages[i].sender.id,
+          name: messages[i].sender.name,
+          imageUrl: messages[i].sender.imageUrl);
+      // chats.removeAt(i);
+      // log(chats[i].text);
+      log(tempMesage.text.toString());
+      var encodeMessages = tempMesage.toJson(tempMesage);
+      // check.add(jsonEncode(test));
+      messageList.add(encodeMessages);
+
+      // log(check);
+
+      // chats.insert(chats.length, tempMesage);
+      // chats[i] = tempMesage;
+      // chats[i].unread=false;
+
+    }
+
     // log('Check: ' + check.toString());
 
     chatsFile.writeAsStringSync(jsonEncode(chatsList));
     userFile.writeAsStringSync(jsonEncode(userList));
+    messagesFile.writeAsStringSync(jsonEncode(messageList));
 
     // file.writeAsStringSync(check);
     // file.writeAsString(check.add());
@@ -187,10 +226,19 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
 
     readJson();
+    readJson();
+
     initializeFiles();
-    print('0. Initialized _json: $_json');
-    _writeJson('key', 'value');
-    _readJson();
+    initializeMessageData();
+
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => initializeMessageData());
+    initializeMessageData();
+    // readJson();
+    initializeFiles();
+    // print('0. Initialized _json: $_json');
+    // _writeJson('key', 'value');
+    // _readJson();
 
     // for (var i = 0; i < chats.length; i++) {
     //   if (chats[i].sender.id == widget.user.id && chats[i].unread) {
@@ -320,6 +368,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (ChatScreen.messageData.length == 0) {
+      initializeMessageData();
+    } else {
+      // print(ChatScreen.chatData);
+    }
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -361,9 +414,20 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: ListView.builder(
                     reverse: true,
                     padding: EdgeInsets.only(top: 15.0),
-                    itemCount: messages.length,
+                    itemCount: ChatScreen.messageDataCount,
                     itemBuilder: (BuildContext context, int index) {
-                      final Message message = messages[index];
+                      final User user = User(
+                          id: ChatScreen.messageData[index]['sender']['id'],
+                          name: ChatScreen.messageData[index]['sender']['name'],
+                          imageUrl: ChatScreen.messageData[index]['sender']
+                              ['imageUrl']);
+                      final Message message = Message(
+                          sender: user,
+                          time: ChatScreen.messageData[index]['time'],
+                          text: ChatScreen.messageData[index]['text'],
+                          isLiked: ChatScreen.messageData[index]['isLiked'],
+                          unread: ChatScreen.messageData[index]['unread']);
+                      // final Message message = Message(ChatScreen.chatData[index]['']);
                       final bool isMe = message.sender.id == currentUser.id;
 
                       return _buildMessage(message, isMe);
@@ -372,7 +436,6 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
               ),
             ),
-            Text(_filePath.toString()),
             _buildMessageComposer(),
           ],
         ),
@@ -382,5 +445,37 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<void> initializeFiles() async {
     _filePath = await _localFile;
+  }
+
+  initializeMessageData() async {
+    // log('getfile');
+    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+
+    new Directory(appDocDirectory.path + '/chats')
+        .create(recursive: true)
+        .then((Directory directory) {});
+
+    messagesFile = File(appDocDirectory.path + '/chats/messages.json');
+
+    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+
+    setState(() {
+      file = File(directory + '/messages.json');
+    });
+
+    List messageData = [];
+    messageData = await jsonDecode(messagesFile.readAsStringSync());
+
+    ChatScreen.messageData = messageData;
+    // log(ChatScreen.chatData.toString());
+    if (ChatScreen.messageData == null) {
+      initializeMessageData();
+    }
+    if (ChatScreen.messageData.isNotEmpty)
+      ChatScreen.messageDataCount = ChatScreen.messageData.length;
+    else
+      initializeMessageData();
+
+    return ChatScreen.messageDataCount;
   }
 }
