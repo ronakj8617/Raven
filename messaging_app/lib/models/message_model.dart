@@ -30,6 +30,7 @@ class Message {
       };
 }
 
+
 // YOU - current user
 
 final User currentUser = User(
