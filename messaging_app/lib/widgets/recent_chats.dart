@@ -1,18 +1,19 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:messaging_app/chat_screen.dart';
+import 'package:messaging_app/home_screen.dart';
 import 'package:messaging_app/models/message_model.dart';
 import 'package:messaging_app/models/user_model.dart';
-import 'package:messaging_app/widgets/recent_chats.dart';
 import 'package:path_provider/path_provider.dart';
 
 class RecentChats extends StatefulWidget {
   static List recentChatData = [];
 
   static int recentChatDataCount = 0;
+
+  const RecentChats({Key? key}) : super(key: key);
 
   @override
   State<RecentChats> createState() => _RecentChatsState();
@@ -26,14 +27,17 @@ class _RecentChatsState extends State<RecentChats> {
   late String directory;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     initializeChatData();
+    WidgetsBinding.instance.addPostFrameCallback((_) => initializeChatData());
   }
 
   @override
   Widget build(BuildContext context) {
+    initializeChatData();
+
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -51,17 +55,17 @@ class _RecentChatsState extends State<RecentChats> {
           child: ListView.builder(
             itemCount: RecentChats.recentChatDataCount,
             itemBuilder: (BuildContext context, int index) {
-               final User user = User(
-                          id: RecentChats.recentChatData[index]['sender']['id'],
-                          name: RecentChats.recentChatData[index]['sender']['name'],
-                          imageUrl: RecentChats.recentChatData[index]['sender']
-                              ['imageUrl']);
-                      final Message chat = Message(
-                          sender: user,
-                          time: RecentChats.recentChatData[index]['time'],
-                          text: RecentChats.recentChatData[index]['text'],
-                          isLiked: RecentChats.recentChatData[index]['isLiked'],
-                          unread: RecentChats.recentChatData[index]['unread']);
+              final User user = User(
+                  id: RecentChats.recentChatData[index]['sender']['id'],
+                  name: RecentChats.recentChatData[index]['sender']['name'],
+                  imageUrl: RecentChats.recentChatData[index]['sender']
+                      ['imageUrl']);
+              final Message chat = Message(
+                  sender: user,
+                  time: RecentChats.recentChatData[index]['time'],
+                  text: RecentChats.recentChatData[index]['text'],
+                  isLiked: RecentChats.recentChatData[index]['isLiked'],
+                  unread: RecentChats.recentChatData[index]['unread']);
               // final Message chat = ;
               return GestureDetector(
                 onTap: () => Navigator.push(
@@ -104,7 +108,7 @@ class _RecentChatsState extends State<RecentChats> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 5.0),
+                              const SizedBox(height: 5.0),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.45,
                                 child: Text(
@@ -168,7 +172,7 @@ class _RecentChatsState extends State<RecentChats> {
     // log('getfile');
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-    new Directory(appDocDirectory.path + '/chats')
+    Directory(appDocDirectory.path + '/chats')
         .create(recursive: true)
         .then((Directory directory) {});
 
@@ -181,14 +185,17 @@ class _RecentChatsState extends State<RecentChats> {
     List recentChatData = [];
     recentChatData = await jsonDecode(recentChatsFile.readAsStringSync());
 
-    RecentChats.recentChatData  = recentChatData;
+    setState(() {
+      RecentChats.recentChatData = recentChatData;
+    });
     // log(ChatScreen.chatData.toString());
     if (RecentChats.recentChatData == null) {
       initializeChatData();
     }
-    if (RecentChats.recentChatData.isNotEmpty)
+    if (RecentChats.recentChatData.isNotEmpty) {
       RecentChats.recentChatDataCount = RecentChats.recentChatData.length;
-    else
+      build(context);
+    } else
       initializeChatData();
 
     return RecentChats.recentChatDataCount;

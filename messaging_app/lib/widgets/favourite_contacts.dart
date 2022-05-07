@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import '../models/user_model.dart';
 
 class FavouriteContacts extends StatefulWidget {
-  static List userData=[];
+  static List userData = [];
 
   const FavouriteContacts({Key? key}) : super(key: key);
 
@@ -28,18 +28,17 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
   @override
   void initState() {
     super.initState();
-    
+
     initializeUserData();
 
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => initializeUserData());
+    WidgetsBinding.instance.addPostFrameCallback((_) => initializeUserData());
   }
 
   @override
   Widget build(BuildContext context) {
     // log('build');f
 
-
+    initializeUserData();
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -72,7 +71,6 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
           Container(
             height: 120.0,
             child: ListView.builder(
-              
               padding: EdgeInsets.only(left: 10.0),
               scrollDirection: Axis.horizontal,
               itemCount: FavouriteContacts.userData.length,
@@ -92,8 +90,8 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                       children: <Widget>[
                         CircleAvatar(
                           radius: 35.0,
-                          backgroundImage:
-                              AssetImage(FavouriteContacts.userData[index]['sender']['imageUrl']),
+                          backgroundImage: AssetImage(FavouriteContacts
+                              .userData[index]['sender']['imageUrl']),
                         ),
                         SizedBox(height: 6.0),
                         Text(
@@ -120,7 +118,7 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
     // log('getfile');
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-    new Directory(appDocDirectory.path + '/chats')
+     Directory(appDocDirectory.path + '/chats')
         .create(recursive: true)
         .then((Directory directory) {
       // print('Path of New Dir: ' + directory.path);
@@ -154,7 +152,7 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
 
     FavouriteContacts.userData = userData;
     // log('message' + userData.runtimeType.toString());
-    if(FavouriteContacts.userData==null){
+    if (FavouriteContacts.userData == null) {
       initializeUserData();
     }
     return userData;
