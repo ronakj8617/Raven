@@ -39,30 +39,33 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyBRkqbJrUaqRK6g1DVAPuQ1SkOjzfza2UM',
-    appId: '1:254010117907:web:f7742c066a3d0ee07c94e6',
+    appId: '1:254010117907:web:9fe301f6dbf487a27c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
     authDomain: 'raven-fef03.firebaseapp.com',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
-    measurementId: 'G-WWB0H6GSES',
+    measurementId: 'G-QEXYWW34MJ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBVpoCRJEsWxV6OkCa4vAsdLV7DiyEEwSM',
-    appId: '1:254010117907:android:a484f7095f1963aa7c94e6',
+    appId: '1:254010117907:android:bb43bc3c526ec0617c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCRCX65x3IIGUN5JV9iLGaDGkCOgIjcWQo',
-    appId: '1:254010117907:ios:a5a67e3d4838f0487c94e6',
+    appId: '1:254010117907:ios:ca4e187f036816227c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
-    iosClientId: '254010117907-mjhgorg060ooulhtl665397f4668688k.apps.googleusercontent.com',
-    iosBundleId: 'com.example.messagingApp',
+    iosClientId: '254010117907-5qs6bf83v8hg83v6g71saoalib4fsquo.apps.googleusercontent.com',
+    iosBundleId: 'com.example.raven',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -70,6 +73,7 @@ class DefaultFirebaseOptions {
     appId: '1:254010117907:ios:a5a67e3d4838f0487c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
     iosClientId: '254010117907-mjhgorg060ooulhtl665397f4668688k.apps.googleusercontent.com',
     iosBundleId: 'com.example.messagingApp',
@@ -77,21 +81,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyBRkqbJrUaqRK6g1DVAPuQ1SkOjzfza2UM',
-    appId: '1:254010117907:web:a4f65091b9317f917c94e6',
+    appId: '1:254010117907:web:b104a86f07835b337c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
     authDomain: 'raven-fef03.firebaseapp.com',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
-    measurementId: 'G-6RZJLKBXW3',
+    measurementId: 'G-Z9VG36KDLK',
   );
 
   static const FirebaseOptions linux = FirebaseOptions(
     apiKey: 'AIzaSyBRkqbJrUaqRK6g1DVAPuQ1SkOjzfza2UM',
-    appId: '1:254010117907:web:c2968baa7a52e2757c94e6',
+    appId: '1:254010117907:web:9fe301f6dbf487a27c94e6',
     messagingSenderId: '254010117907',
     projectId: 'raven-fef03',
     authDomain: 'raven-fef03.firebaseapp.com',
+    databaseURL: 'https://raven-fef03-default-rtdb.firebaseio.com',
     storageBucket: 'raven-fef03.appspot.com',
-    measurementId: 'G-Q1WZDK48BK',
+    measurementId: 'G-QEXYWW34MJ',
   );
 }

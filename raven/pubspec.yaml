@@ -37,7 +37,12 @@ dependencies:
   path_provider: ^2.0.9
   dartson: ^1.0.0-alpha+3
   universal_html: ^1.2.4
-  firebase_core: ^1.16.0
+  firebase_core: 1.16.0
+  firebase_auth: ^3.3.17
+  firebase_messaging: ^11.3.0
+  firebase_storage: ^10.2.15
+  firebase_database: ^9.0.13
+  firebase_in_app_messaging: ^0.6.0+13
 
 dev_dependencies:
   flutter_test:

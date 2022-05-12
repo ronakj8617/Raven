@@ -1,7 +1,13 @@
+import 'dart:developer';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:raven/widgets/category_selector.dart';
 import 'package:raven/widgets/favourite_contacts.dart';
 import 'package:raven/widgets/recent_chats.dart';
+
+import 'firebase_options.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,19 +16,54 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    WidgetsFlutterBinding.ensureInitialized();
+    // Firebase.initializeApp();
+    // Firebase.app('raven (ios)');
+    WidgetsBinding.instance.addPostFrameCallback((_) => firebaseInit());
+
+    // Firebase.initializeApp();
+    // FirebaseDatabase database = FirebaseDatabase.instance;
+    // firebaseInit();
+  }
+
+  Future<void> firebaseInit() async {
+        await Firebase.initializeApp();
+
+    if (Firebase.apps.length == 0) {
+      // await Firebase.initializeApp(
+          // options: DefaultFirebaseOptions.currentPlatform);
+    } // Firebase.initializeApp().onError((error, stackTrace) => (error));
+
+    // FirebaseApp secondaryApp = Firebase.app('raven (ios)');
+    // FirebaseDatabase database = FirebaseDatabase.instanceFor(app: secondaryApp);
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref("raven (ios)");
+    var ios = DefaultFirebaseOptions.ios;
+
+    await ref.set({
+      "name": "John",
+      "age": 18,
+      "address": {"line1": "100 Mountain View"}
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           iconSize: 30.0,
           color: Colors.white,
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'Raven 1.1.0',
           style: TextStyle(
             fontSize: 28.0,
@@ -46,15 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).accentColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
                 ),
               ),
               child: Column(
                 children: <Widget>[
-                  FavouriteContacts(),
-                  RecentChats(),
+                  // const FavouriteContacts(),
+                  // const RecentChats(),
                 ],
               ),
             ),
