@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:messaging_app/models/message_model.dart';
@@ -22,7 +23,8 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
   Map<String, String> dataMap = {'Sam': 'Sam.jpg'};
   late String directory;
   File file = File('');
-  var chatsFile, userFile;
+  File chatsFile =File('');
+  File userFile = File('');
   static var userData;
 
   @override
@@ -116,45 +118,51 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
 
   initializeUserData() async {
     // log('getfile');
-    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+    if (kIsWeb) {
+      // Set web-specific directory
+    } else {
+      
+      Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-     Directory(appDocDirectory.path + '/chats')
-        .create(recursive: true)
-        .then((Directory directory) {
-      // print('Path of New Dir: ' + directory.path);
-    });
+      Directory(appDocDirectory.path + '/chats')
+          .create(recursive: true)
+          .then((Directory directory) {
+        // print('Path of New Dir: ' + directory.path);
+      });
 
-    chatsFile = File(appDocDirectory.path + '/chats/chats.json');
-    userFile = File(appDocDirectory.path + '/chats/users.json');
+      chatsFile = File(appDocDirectory.path + '/chats/chats.json');
+      userFile = File(appDocDirectory.path + '/chats/users.json');
 
-    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
-    // log(directory);
+     
+      directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+      // log(directory);
 
-    setState(() {
-      // file = Directory("$directory")
-      //     .listSync(); //use your folder name insted of resume.
+      setState(() {
+        // file = Directory("$directory")
+        //     .listSync(); //use your folder name insted of resume.
 
-      file = File(directory + '/user.json');
-    });
-    // log(test);
+        file = File(directory + '/user.json');
+      });
+      // log(test);
 
-    // var check=User.fromJson(file.readAsLinesSync().first);
-    // log(file.readAsStringSync());
-    List userData = [];
+      // var check=User.fromJson(file.readAsLinesSync().first);
+      // log(file.readAsStringSync());
+      List userData = [];
 
-    userData = await jsonDecode(userFile.readAsStringSync());
-    // log(data.toString());
-    // log(userData[0]['sender']['name']);
+      userData = await jsonDecode(userFile.readAsStringSync());
+      // log(data.toString());
+      // log(userData[0]['sender']['name']);
 
-    // log(file.toString());
+      // log(file.toString());
 
-    // log(data.name);
+      // log(data.name);
 
-    FavouriteContacts.userData = userData;
-    // log('message' + userData.runtimeType.toString());
-    if (FavouriteContacts.userData == null) {
-      initializeUserData();
+      FavouriteContacts.userData = userData;
+      // log('message' + userData.runtimeType.toString());
+      if (FavouriteContacts.userData == null) {
+        initializeUserData();
+      }
+      return userData;
     }
-    return userData;
   }
 }

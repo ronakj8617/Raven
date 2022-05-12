@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:messaging_app/chat_screen.dart';
-import 'package:messaging_app/home_screen.dart';
 import 'package:messaging_app/models/message_model.dart';
 import 'package:messaging_app/models/user_model.dart';
 import 'package:path_provider/path_provider.dart';
@@ -29,9 +29,132 @@ class _RecentChatsState extends State<RecentChats> {
   @override
   void initState() {
     super.initState();
-
+    readJson();
     initializeChatData();
     WidgetsBinding.instance.addPostFrameCallback((_) => initializeChatData());
+  }
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/chats.json');
+    // log('Response: ' + response);
+
+    final test = rootBundle.loadString('assets/chats.json');
+    // log('test');
+
+    Directory appDocDirectory = await getApplicationDocumentsDirectory();
+    // log('Parent: ' + appDocDirectory.parent.path);
+    new Directory(appDocDirectory.path + '/chats')
+        .create(recursive: true)
+        .then((Directory directory) {
+      // print('Path of New Dir: ' + directory.path);
+    });
+
+    var chatsFile = File(appDocDirectory.path + '/chats/chats.json');
+    var userFile = File(appDocDirectory.path + '/chats/users.json');
+    var messageFile = File(appDocDirectory.path + '/chats/messsages.json');
+
+log(chatsFile.path);
+    if (userFile.exists() != true) {
+      userFile.create();
+          List userList = [];
+    List chatsList = [];
+    List messageList = [];
+
+    for (var i = 0; i < chats.length; i++) {
+      Message tempMesage;
+      // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
+
+      tempMesage = Message(
+          sender: chats[i].sender,
+          time: chats[i].time,
+          text: chats[i].text,
+          isLiked: chats[i].isLiked,
+          unread: chats[i].unread);
+
+      User user = User(
+          id: chats[i].sender.id,
+          name: chats[i].sender.name,
+          imageUrl: chats[i].sender.imageUrl);
+      // chats.removeAt(i);
+      // log(chats[i].text);
+      // log(tempMesage.text.toString());
+      var encodeChats = tempMesage.toJson(tempMesage);
+      var encodeUsers = user.toJson(user);
+      // check.add(jsonEncode(test));
+      chatsList.add(encodeChats);
+      userList.add(encodeUsers);
+
+      // log(check);
+
+      // chats.insert(chats.length, tempMesage);
+      // chats[i] = tempMesage;
+      // chats[i].unread=false;
+
+    }
+    for (var i = 0; i < messages.length; i++) {
+      Message tempMesage;
+      tempMesage = Message(
+          sender: messages[i].sender,
+          time: messages[i].time,
+          text: messages[i].text,
+          isLiked: messages[i].isLiked,
+          unread: messages[i].unread);
+
+      User user = User(
+          id: messages[i].sender.id,
+          name: messages[i].sender.name,
+          imageUrl: messages[i].sender.imageUrl);
+      // chats.removeAt(i);
+      // log(chats[i].text);
+      // log(tempMesage.text.toString());
+      var encodeMessages = tempMesage.toJson(tempMesage);
+      // check.add(jsonEncode(test));
+      messageList.add(encodeMessages);
+
+      // log(check);
+
+      // chats.insert(chats.length, tempMesage);
+      // chats[i] = tempMesage;
+      // chats[i].unread=false;
+
+    }
+
+    // log('Check: ' + check.toString());
+// /
+    // chatsFile.writeAsStringSync(jsonEncode(chatsList));
+    // userFile.writeAsStringSync(jsonEncode(userList));
+    // messageFile.writeAsStringSync(jsonEncode(messageList));
+
+    }
+    if (chatsFile.exists() != true) {
+      chatsFile.create();
+    }
+    if (messageFile.exists() != true) {
+      messageFile.create();
+    }
+
+    // log('File: ' + chatsFile.toString());
+    final SecurityContext context = SecurityContext.defaultContext;
+    // String crtPath = await _getLocalFile("client.crt");
+    // context.setTrustedCertificates(file.path);
+
+    // chatsFile.readAsString().then((value) => log(value));
+
+    // final data = await json.decode(response);
+    setState(() {
+      // _items = data["items"];
+    });
+
+
+    // file.writeAsStringSync(check);
+    // file.writeAsString(check.add());
+    //  check.forEach((element) { file
+    //       .writeAsString(element)
+    //       .then((value) => log(value.toString()))
+    //       .onError((error, stackTrace) => print(error));});
+
+    // file.readAsString().then((value) => log(value));
+    // _items.forEach((element) {log(element['id']);});
   }
 
   @override
@@ -170,6 +293,7 @@ class _RecentChatsState extends State<RecentChats> {
 
   initializeChatData() async {
     // log('getfile');
+
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
     Directory(appDocDirectory.path + '/chats')
@@ -181,7 +305,7 @@ class _RecentChatsState extends State<RecentChats> {
     directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
 
     file = File(directory + '/user.json');
-
+    // log(file.path);
     List recentChatData = [];
     recentChatData = await jsonDecode(recentChatsFile.readAsStringSync());
 

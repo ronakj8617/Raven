@@ -143,23 +143,32 @@ class _ChatScreenState extends State<ChatScreen> {
     List messageList = [];
 
     for (var i = 0; i < chats.length; i++) {
+      Message tempMesage;
       // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
-
-      // log('message');
-      Message tempMesage = Message(
-          sender: chats[i].sender,
-          time: chats[i].time,
-          text: chats[i].text,
-          isLiked: chats[i].isLiked,
-          unread: chats[i].unread);
-
+      if (chats[i].sender.name == widget.user.name) {
+        log('Widget Username: ' + widget.user.name);
+        // log('message');
+        tempMesage = Message(
+            sender: chats[i].sender,
+            time: chats[i].time,
+            text: chats[i].text,
+            isLiked: chats[i].isLiked,
+            unread: false);
+      } else {
+        tempMesage = Message(
+            sender: chats[i].sender,
+            time: chats[i].time,
+            text: chats[i].text,
+            isLiked: chats[i].isLiked,
+            unread: chats[i].unread);
+      }
       User user = User(
           id: chats[i].sender.id,
           name: chats[i].sender.name,
           imageUrl: chats[i].sender.imageUrl);
       // chats.removeAt(i);
       // log(chats[i].text);
-      log(tempMesage.text.toString());
+      // log(tempMesage.text.toString());
       var encodeChats = tempMesage.toJson(tempMesage);
       var encodeUsers = user.toJson(user);
       // check.add(jsonEncode(test));
@@ -175,27 +184,29 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
     for (var i = 0; i < messages.length; i++) {
-      // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
-
-      // log('message');
-      Message tempMesage = Message(
-          sender: messages[i].sender,
-          time: messages[i].time,
-          text: messages[i].text,
-          isLiked: messages[i].isLiked,
-          unread: messages[i].unread);
-
-      User user = User(
-          id: messages[i].sender.id,
-          name: messages[i].sender.name,
-          imageUrl: messages[i].sender.imageUrl);
+      Message tempMesage;
+      if (chats[i].sender.id == widget.user.id) {
+        // log('message');
+        tempMesage = Message(
+            sender: messages[i].sender,
+            time: messages[i].time,
+            text: messages[i].text,
+            isLiked: messages[i].isLiked,
+            unread: false);
+      } else {
+        tempMesage = Message(
+            sender: messages[i].sender,
+            time: messages[i].time,
+            text: messages[i].text,
+            isLiked: messages[i].isLiked,
+            unread: messages[i].unread);
+      }
+    
       // chats.removeAt(i);
       // log(chats[i].text);
-      log(tempMesage.text.toString());
       var encodeMessages = tempMesage.toJson(tempMesage);
       // check.add(jsonEncode(test));
       messageList.add(encodeMessages);
-
       // log(check);
 
       // chats.insert(chats.length, tempMesage);
@@ -204,7 +215,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
     }
 
+
     // log('Check: ' + check.toString());
+    // chatsFile.delete();
+    // userFile.delete();
+    // messagesFile.delete();
 
     chatsFile.writeAsStringSync(jsonEncode(chatsList));
     userFile.writeAsStringSync(jsonEncode(userList));
