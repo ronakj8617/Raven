@@ -5,21 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "messaging_app",
-            "cwd": "messaging_app",
+            "name": "raven",
+            "cwd": "raven",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "messaging_app (profile mode)",
-            "cwd": "messaging_app",
+            "name": "raven (profile mode)",
+            "cwd": "raven",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "messaging_app (release mode)",
-            "cwd": "messaging_app",
+            "name": "raven (release mode)",
+            "cwd": "raven",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
