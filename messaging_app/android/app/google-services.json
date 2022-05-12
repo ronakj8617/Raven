@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "254010117907",
+    "project_id": "raven-fef03",
+    "storage_bucket": "raven-fef03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254010117907:android:a484f7095f1963aa7c94e6",
+        "android_client_info": {
+          "package_name": "com.example.messaging_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254010117907-l16hsp2tlq2dcaimv5od0vq07ha2ic4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVpoCRJEsWxV6OkCa4vAsdLV7DiyEEwSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254010117907-l16hsp2tlq2dcaimv5od0vq07ha2ic4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
