@@ -64,6 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
         DatabaseReference ref =
             FirebaseDatabase.instance.ref("raven (Android)");
+            
+        await ref
+            .child(Timeline.now.toString())
+            .set({'user': message.toJson(message)})
+            .onError((error, stackTrace) => error.toString())
+            .then((value) => value);
       } else if (Platform.isIOS) {
         await Firebase.initializeApp();
 
