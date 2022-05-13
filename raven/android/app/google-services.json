@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:254010117907:android:a484f7095f1963aa7c94e6",
         "android_client_info": {
-          "package_name": "com.example.raven"
+          "package_name": "com.example.messaging_app"
         }
       },
       "oauth_client": [

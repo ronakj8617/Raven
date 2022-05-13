@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
@@ -33,8 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> firebaseInit() async {
-        await Firebase.initializeApp();
-
     // if (Firebase.apps.length == 0) {
     //   // await Firebase.initializeApp(
     //       // options: DefaultFirebaseOptions.currentPlatform);
@@ -43,14 +43,57 @@ class _HomeScreenState extends State<HomeScreen> {
     // FirebaseApp secondaryApp = Firebase.app('raven (ios)');
     // FirebaseDatabase database = FirebaseDatabase.instanceFor(app: secondaryApp);
 
-    DatabaseReference ref = FirebaseDatabase.instance.ref("raven (ios)");
-    var ios = DefaultFirebaseOptions.ios;
-
     User user = User(id: 001, name: 'name', imageUrl: 'imageUrl');
-    Message message= Message(sender:user, time: 'time', text: 'text', isLiked: true, unread: true);
+    Message message = Message(
+        sender: user, time: 'time', text: 'text', isLiked: true, unread: true);
+    if (!kIsWeb) {
+      // ignore: unrelated_type_equality_checks
 
-    await ref.child(Timeline.now.toString()).set({'user':message.toJson(message)
-    });
+      if (Platform.isMacOS) {
+        await Firebase.initializeApp(
+            options: DefaultFirebaseOptions.currentPlatform);
+
+        DatabaseReference ref = FirebaseDatabase.instance.ref("raven (macOS)");
+        await ref
+            .child(Timeline.now.toString())
+            .set({'user': message.toJson(message)})
+            .onError((error, stackTrace) => error.toString())
+            .then((value) => value);
+      } else if (Platform.isAndroid) {
+        await Firebase.initializeApp();
+
+        DatabaseReference ref =
+            FirebaseDatabase.instance.ref("raven (Android)");
+      } else if (Platform.isIOS) {
+        await Firebase.initializeApp();
+
+        // var ios = DefaultFirebaseOptions.ios;
+        DatabaseReference ref = FirebaseDatabase.instance.ref("raven (iOS)");
+
+        await ref
+            .child(Timeline.now.toString())
+            .set({'user': message.toJson(message)})
+            .onError((error, stackTrace) => error.toString())
+            .then((value) => value);
+      }
+    } else {
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform);
+
+      DatabaseReference ref = FirebaseDatabase.instance.ref("raven (Web)");
+
+      User user = User(id: 001, name: 'name', imageUrl: 'imageUrl');
+      Message message = Message(
+          sender: user,
+          time: 'time',
+          text: 'text',
+          isLiked: true,
+          unread: true);
+
+      await ref
+          .child(Timeline.now.toString())
+          .set({'user': message.toJson(message)});
+    }
   }
 
   @override
@@ -66,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {},
         ),
         title: const Text(
-          'Raven 1.1.1',
+          'Raven 1.1.2',
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
