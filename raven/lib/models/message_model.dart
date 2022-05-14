@@ -17,19 +17,28 @@ class Message {
   });
 
   Map toJson(Message message) => {
-
-        'sender':{
-          'name':sender.name,
-          'id':sender.id,
-          'imageUrl':sender.imageUrl
+        'sender': {
+          'name': sender.name,
+          'id': sender.id,
+          'imageUrl': sender.imageUrl
         },
         'time': message.time,
         'text': message.text,
         'isLiked': message.isLiked,
         'unread': message.unread,
       };
-}
 
+  factory Message.fromJson(Map<Object?, Object?> data) {
+    // note the explicit cast to String
+    // this is required if robust lint rules are enabled
+    final sender = data['sender'] as User;
+    final time = data['time'] as String;
+    final text = data['text'] as String;
+    final isLiked = data['isLiked'] as bool;
+    final unread = data['unread'] as bool;
+    return Message(isLiked: isLiked,sender: sender,text: text,time: time,unread: unread);
+  }
+}
 
 // YOU - current user
 

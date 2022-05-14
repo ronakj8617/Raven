@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -10,6 +11,7 @@ import 'package:raven/models/user_model.dart';
 import 'package:raven/widgets/category_selector.dart';
 import 'package:raven/widgets/favourite_contacts.dart';
 import 'package:raven/widgets/recent_chats.dart';
+import 'package:snapshot/snapshot.dart';
 
 import 'firebase_options.dart';
 
@@ -64,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         DatabaseReference ref =
             FirebaseDatabase.instance.ref("raven (Android)");
-            
+
         await ref
             .child(Timeline.now.toString())
             .set({'user': message.toJson(message)})
@@ -81,6 +83,22 @@ class _HomeScreenState extends State<HomeScreen> {
             .set({'user': message.toJson(message)})
             .onError((error, stackTrace) => error.toString())
             .then((value) => value);
+
+        final getRef = FirebaseDatabase.instance.ref("raven (iOS)");
+        final snapshot = await ref.get();
+        if (snapshot.exists) {
+          var decoder = SnapshotDecoder()
+            ..register<Map<String, dynamic>, Message>(
+                (v) => Message.fromJson(v));
+
+          Map m = jsonDecode(
+              jsonEncode(snapshot.value));
+
+          log(m['17873075840'].toString());
+        } else {
+          print('No data available.');
+          // }
+        }
       }
     } else {
       await Firebase.initializeApp(
