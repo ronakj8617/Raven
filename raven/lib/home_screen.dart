@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as Auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
@@ -105,6 +106,14 @@ class _HomeScreenState extends State<HomeScreen> {
             .then((value) => value);
       } else if (Platform.isIOS) {
         await Firebase.initializeApp();
+
+        await Auth.FirebaseAuth.instance.verifyPhoneNumber(
+          phoneNumber: '+91 7283844571',
+          verificationCompleted: (Auth.PhoneAuthCredential credential) {},
+          verificationFailed: (Auth.FirebaseAuthException e) {log(e.toString());},
+          codeSent: (String verificationId, int? resendToken) {},
+          codeAutoRetrievalTimeout: (String verificationId) {},
+        );
 
         FirebaseFirestore.instance
             .collection('testing')
