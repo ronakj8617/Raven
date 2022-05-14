@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
@@ -55,6 +56,21 @@ class _HomeScreenState extends State<HomeScreen> {
         await Firebase.initializeApp(
             options: DefaultFirebaseOptions.currentPlatform);
 
+        FirebaseFirestore.instance
+            .collection('testing')
+            .doc('Desktop')
+            .collection('macOs')
+            .add({'Name': 'Raven1', 'DOB': 1999});
+
+        var db = FirebaseFirestore.instance;
+
+        await db.collection("testing").get().then((event) {
+          for (var doc in event.docs) {
+            print("${doc.id} => ${doc.data()}");
+            var v = doc.get('Name');
+            print(v);
+          }
+        });
         DatabaseReference ref = FirebaseDatabase.instance.ref("raven (macOS)");
         await ref
             .child(Timeline.now.toString())
@@ -64,6 +80,21 @@ class _HomeScreenState extends State<HomeScreen> {
       } else if (Platform.isAndroid) {
         await Firebase.initializeApp();
 
+        FirebaseFirestore.instance
+            .collection('testing')
+            .doc('Mobile')
+            .collection('Android')
+            .add({'Name': 'Raven1', 'DOB': 1999});
+
+        var db = FirebaseFirestore.instance;
+
+        await db.collection("testing/Mobile/Android").get().then((event) {
+          for (var doc in event.docs) {
+            print("${doc.id} => ${doc.data()}");
+            var v = doc.get('Name');
+            print(v);
+          }
+        });
         DatabaseReference ref =
             FirebaseDatabase.instance.ref("raven (Android)");
 
@@ -75,6 +106,20 @@ class _HomeScreenState extends State<HomeScreen> {
       } else if (Platform.isIOS) {
         await Firebase.initializeApp();
 
+        FirebaseFirestore.instance
+            .collection('testing')
+            .doc('Mobile')
+            .collection('iOS')
+            .add({'Name': 'Raven1', 'DOB': 1999});
+
+        var db = FirebaseFirestore.instance;
+        await db.collection("testing/Mobile/iOS").get().then((event) {
+          for (var doc in event.docs) {
+            print("${doc.id} => ${doc.data()}");
+            var v = doc.get('Name');
+            print(v);
+          }
+        });
         // var ios = DefaultFirebaseOptions.ios;
         DatabaseReference ref = FirebaseDatabase.instance.ref("raven (iOS)");
 
@@ -91,8 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ..register<Map<String, dynamic>, Message>(
                 (v) => Message.fromJson(v));
 
-          Map m = jsonDecode(
-              jsonEncode(snapshot.value));
+          Map m = jsonDecode(jsonEncode(snapshot.value));
 
           log(m['17873075840'].toString());
         } else {
@@ -104,6 +148,21 @@ class _HomeScreenState extends State<HomeScreen> {
       await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform);
 
+      FirebaseFirestore.instance
+          .collection('testing')
+          .doc('web')
+          .collection('web')
+          .add({'Name': 'Raven3', 'DOB': 1999});
+
+      var db = FirebaseFirestore.instance;
+
+      await db.collection("testing/web/web").get().then((event) {
+        for (var doc in event.docs) {
+          print("${doc.id} => ${doc.data()}");
+          var v = doc.get('Name');
+          print(v);
+        }
+      });
       DatabaseReference ref = FirebaseDatabase.instance.ref("raven (Web)");
 
       User user = User(id: 001, name: 'name', imageUrl: 'imageUrl');

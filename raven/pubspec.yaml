@@ -44,6 +44,7 @@ dependencies:
   firebase_database: ^9.0.13
   firebase_in_app_messaging: ^0.6.0+13
   snapshot: ^0.2.5
+  cloud_firestore: ^3.1.15
 
 dev_dependencies:
   flutter_test:
