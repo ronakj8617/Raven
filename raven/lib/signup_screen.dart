@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,7 +30,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   late String otp;
-  late String verificationId, smsCode;
+  late String verificationId = '';
+  late String smsCode;
   late Auth.FirebaseAuth firebaseAuth;
   late BuildContext context;
   late String phoneNumber;
@@ -218,11 +220,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> sendOtp() async {
-    if (Platform.isIOS) {
+    if (Platform.isIOS || Platform.isAndroid) {
       firebaseAuth = await Auth.FirebaseAuth.instance;
 
       if (phoneNumberController.text.isEmpty) {
-        showAlertDialog(context, 'Error', 'Please enter a phone number');
+        showToast('Please enter a phone number');
       } else {
         firebaseAuth.verifyPhoneNumber(
           phoneNumber: phoneNumber,
@@ -231,11 +233,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           },
           verificationFailed: (Auth.FirebaseAuthException e) {
             // log(e.code.toString());
-            showToast(e.code);
             if (e.code.contains('quota')) {
-              showToast('Please try again after some time');
-            }
-            else{
+              showToast(
+                  'You have tried signing up with the same phone number many times, please try again after some time');
+            } else {
               showToast(e.code);
             }
           },
@@ -253,25 +254,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Future<void> verifyOtp() async {
     if (Platform.isIOS || Platform.isAndroid) {
-      
-      if (otpController.text.isEmpty) {
-        showAlertDialog(context, 'Error', 'Please enter the OTP');
+      if (verificationId.isEmpty) {
+        showToast('Please proceed with sending an OTP');
       } else {
-        if (otpController.text.isNotEmpty) {
-          smsCode = otpController.text;
+        if (otpController.text.isEmpty) {
+          showAlertDialog(context, 'Error', 'Please enter the OTP');
+        } else {
+          if (otpController.text.isNotEmpty) {
+            smsCode = otpController.text;
 
-          Auth.PhoneAuthCredential credential =
-              Auth.PhoneAuthProvider.credential(
-                  verificationId: verificationId, smsCode: smsCode);
+            Auth.PhoneAuthCredential credential =
+                Auth.PhoneAuthProvider.credential(
+                    verificationId: verificationId, smsCode: smsCode);
 
-          await firebaseAuth
-              .signInWithCredential(credential)
-              .whenComplete(() => {
-                    showToast('Signed up successfully'),
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()))
-                  })
-              .catchError(showToast('Please enter a valid OTP') as Function);
+            await firebaseAuth
+                .signInWithCredential(credential)
+                .whenComplete(() => {
+                      showToast('Signed up successfully'),
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()))
+                    })
+                .catchError((error) {
+              showToast(error.toString()) as Function;
+            });
+          }
         }
       }
     }
@@ -331,8 +337,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     AbsorbPointer(
                       absorbing: false,
                       child: PinCodeTextField(
+                        enablePinAutofill: true,
+                        hapticFeedbackTypes: HapticFeedbackTypes.heavy,
+                        useHapticFeedback: true,
                         enabled: true,
                         appContext: context,
+                        autoDisposeControllers: false,
                         length: 6,
                         obscureText: false,
                         hintCharacter: '0',
