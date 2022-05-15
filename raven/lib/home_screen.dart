@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
         await Auth.FirebaseAuth.instance.verifyPhoneNumber(
           phoneNumber: '+91 7283844571',
           verificationCompleted: (Auth.PhoneAuthCredential credential) {},
-          verificationFailed: (Auth.FirebaseAuthException e) {log(e.toString());},
+          verificationFailed: (Auth.FirebaseAuthException e) {log(e.code.toString());},
           codeSent: (String verificationId, int? resendToken) {},
           codeAutoRetrievalTimeout: (String verificationId) {},
         );
@@ -231,8 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: <Widget>[
-                  // const FavouriteContacts(),
-                  // const RecentChats(),
+                  const FavouriteContacts(),
+                  const RecentChats(),
                 ],
               ),
             ),

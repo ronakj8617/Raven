@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:raven/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:raven/signup_screen.dart';
 import 'firebase_options.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomeScreen(),
+    home: SignUpScreen(),
     theme: ThemeData(primaryColor: Colors.red, accentColor: Color(0xFFFEF9EB)),
     debugShowCheckedModeBanner: false,
   ));
