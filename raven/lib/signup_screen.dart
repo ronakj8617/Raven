@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartson/transformers/date_time.dart';
 import 'package:firebase_auth/firebase_auth.dart' as Auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -12,12 +13,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:raven/home_screen.dart';
+import 'package:raven/models/contact_model.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
 import 'package:snapshot/snapshot.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import 'firebase_options.dart';
 
@@ -39,6 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    verificationSuccessful();
     WidgetsFlutterBinding.ensureInitialized();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => firebaseInit());
@@ -270,9 +275,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             await firebaseAuth
                 .signInWithCredential(credential)
                 .whenComplete(() => {
-                      showToast('Signed up successfully'),
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()))
+                      verificationSuccessful(),
+
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => HomeScreen()))
                     })
                 .catchError((error) {
               showToast(error.toString()) as Function;
@@ -281,6 +287,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
       }
     }
+  }
+
+  verificationSuccessful() async {
+    showToast('Signed up successfully');
+
+    String date = DateTime.now().toUtc().toString();
+
+    String time = DateTime.now().toUtc().toString();
+
+    Contact_Model contact_model = Contact_Model(
+        phoneNumber: 'phoneNumber',
+        name: 'name',
+        dateOfBirth: 'dateOfBirth',
+        emailId: 'emailId',
+        status: 'status',
+        imageUrl: 'imageUrl',
+        dateOfJoining: date.substring(0, 10),
+        isAccountActive: true,
+        isAccountBanned: false,
+        isAccountDeleted: false,
+        timeOfJoining: time.substring(11));
+
+    await Firebase.initializeApp();
+
+    var db = FirebaseFirestore.instance;
+
+    db.collection('contacts').add(contact_model.toJson(contact_model));
+
+    // var ios = DefaultFirebaseOptions.ios;
   }
 
   TextEditingController phoneNumberController = TextEditingController();
@@ -430,10 +465,24 @@ showAlertDialog(BuildContext context, String title, String errorMessage) {
 showToast(String message) {
   Fluttertoast.showToast(
       msg: message,
-      toastLength: Toast.LENGTH_SHORT,
+      toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
       backgroundColor: Colors.red,
       textColor: Colors.white,
       fontSize: 16.0);
+}
+
+afterPhoneVerification(BuildContext context) {
+  Container(
+    child: Column(children: [
+      TextField(
+        style: TextStyle(
+          color: Colors.lightGreen,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SfDateRangePicker(),
+    ]),
+  );
 }

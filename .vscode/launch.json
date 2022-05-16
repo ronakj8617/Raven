@@ -4,11 +4,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": "raven",
             "cwd": "raven",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--no-sound-null-safety"
+            ]
         },
         {
             "name": "raven (profile mode)",
@@ -23,6 +27,18 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "raven (web)",
+            "cwd": "raven",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "args": [
+                "sound-null-safety",
+                "export CHROME_EXECUTABLE='/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'",
+                "flutter run -d chrome --web-renderer html"
+            ]
         }
     ]
 }
