@@ -201,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {},
         ),
         title: const Text(
-          'Raven 1.1.2',
+          'Raven 1.1.3',
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
