@@ -23,7 +23,7 @@ jobs:
             flutter pub get
             # flutter build apk
             # pwd
-            flutter build web --release            
+            flutter build web --no-sound-null-safety --release             
           working-directory: ./
 
         # Deploy Firebase Hosting
