@@ -35,9 +35,25 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      # Install Flutter command
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
+      # Build Website
+      - name: Build Website
+        run: |
+          cd raven
+          flutter channel dev
+          flutter upgrade
+          flutter config --enable-web
+          flutter pub get
+          # flutter build apk
+          # pwd
+          flutter build web --release            
+        working-directory: ./
   # Deployment job
   deploy:
     environment:
