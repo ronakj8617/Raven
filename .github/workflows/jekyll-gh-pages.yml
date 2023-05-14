@@ -34,7 +34,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./build/web/_site
+          destination: ./
       # Install Flutter command
       - uses: subosito/flutter-action@v1
         with:
@@ -52,7 +52,7 @@ jobs:
           flutter pub get
           # flutter build apk
           # pwd
-          flutter build web --release            
+          flutter build web
         working-directory: ./
   # Deployment job
   deploy:
