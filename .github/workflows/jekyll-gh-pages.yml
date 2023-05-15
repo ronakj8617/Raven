@@ -45,15 +45,20 @@ jobs:
       # Build Website
       - name: Build Website
         run: |
+          pwd
           cd raven
-          # flutter channel dev
-          # flutter upgrade
+          pwd
+          flutter channel stable
+          flutter upgrade
+          flutter clean
           flutter config --enable-web
           flutter pub get
           # flutter build apk
           # pwd
           flutter build web
-        working-directory: ./raven/build/web
+          # npm i -g serve
+          # serve .
+        working-directory: ./
   # Deployment job
   deploy:
     environment:

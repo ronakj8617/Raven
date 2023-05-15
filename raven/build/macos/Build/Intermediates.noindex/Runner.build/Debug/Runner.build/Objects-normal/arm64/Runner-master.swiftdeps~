@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
-options: "a6b7528bcd994eed37495e1fb88710b3384267c9491b78c113f6396ffbde4434"
-build_start_time: [1683909381, 707096000]
-build_end_time: [1683909381, 782782000]
-inputs:
-  "/Users/ronak/Ronak/GitHub Repos/Raven/raven/macos/Flutter/GeneratedPluginRegistrant.swift": !private [1683909362, 125273362]
-  "/Users/ronak/Ronak/GitHub Repos/Raven/raven/macos/Runner/AppDelegate.swift": !private [1683464634, 488430544]
-  "/Users/ronak/Ronak/GitHub Repos/Raven/raven/macos/Runner/MainFlutterWindow.swift": !private [1683464634, 489606076]
