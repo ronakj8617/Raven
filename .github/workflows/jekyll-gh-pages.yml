@@ -50,7 +50,6 @@ jobs:
           pwd
           # flutter channel dev
           # flutter upgrade
-          flutter create --platforms web
           flutter clean
           flutter config --enable-web
           flutter pub get
