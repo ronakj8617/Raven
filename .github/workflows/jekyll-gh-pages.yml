@@ -48,8 +48,8 @@ jobs:
           pwd
           cd raven
           pwd
-          # flutter channel dev
-          # flutter upgrade
+          flutter channel stable
+          flutter upgrade
           flutter clean
           flutter config --enable-web
           flutter pub get
