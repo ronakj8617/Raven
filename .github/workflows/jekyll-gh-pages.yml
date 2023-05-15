@@ -54,10 +54,10 @@ jobs:
           flutter config --enable-web
           flutter pub get
           # flutter build apk
-          # pwd
-          #need to provide this path, otherwise it will just display a blank screen because the website won't have access to .the resources           
-          flutter build web --base-href "/raven/build/web/" 
-          # npm i -g serve
+          pwd
+          #Note: need to provide this path, otherwise it will just display a blank screen because the website won't have access to .the resources           
+          #Note: using HTML as the renderer the site will be built as an HTML app and not CanvasKit
+          flutter build web --base-href "/raven/build/web/"  --web-renderer html                  # npm i -g serve
           # serve .
         working-directory: ./
   # Deployment job
