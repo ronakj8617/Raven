@@ -55,7 +55,7 @@ jobs:
           flutter pub get
           # flutter build apk
           # pwd
-          #need to provide this path, otherwise it will just display a blank screen because the website won't have access to .the resources          
+          #need to provide this path, otherwise it will just display a blank screen because the website won't have access to .the resources           
           flutter build web --base-href "/raven/build/web/" 
           # npm i -g serve
           # serve .
