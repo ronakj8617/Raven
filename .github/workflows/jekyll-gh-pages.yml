@@ -45,7 +45,9 @@ jobs:
       # Build Website
       - name: Build Website
         run: |
+          pwd
           cd raven
+          pwd
           # flutter channel dev
           # flutter upgrade
           flutter config --enable-web
@@ -53,7 +55,7 @@ jobs:
           # flutter build apk
           # pwd
           flutter build web
-        working-directory: ./raven/build/web
+        working-directory: ./build/web
   # Deployment job
   deploy:
     environment:
