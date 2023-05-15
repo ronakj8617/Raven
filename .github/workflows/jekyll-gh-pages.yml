@@ -48,16 +48,16 @@ jobs:
           pwd
           cd raven
           pwd
-          flutter channel stable
-          flutter upgrade
+          # flutter channel stable
+          # flutter upgrade
           flutter clean
           flutter config --enable-web
           flutter pub get
           # flutter build apk
           # pwd
           flutter build web
-          npm i -g serve
-          serve .
+          # npm i -g serve
+          # serve .
         working-directory: ./
   # Deployment job
   deploy:
