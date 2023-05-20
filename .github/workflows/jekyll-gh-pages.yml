@@ -61,7 +61,7 @@ jobs:
           flutter build web
           # npm i -g serve
           # serve .
-        working-directory: ./
+        working-directory: ./Raven/build/web
   # Deployment job
   deploy:
     environment:
