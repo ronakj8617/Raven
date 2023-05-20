@@ -33,7 +33,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./Raven/build/web
           destination: ./_site
       # Install Flutter command
       - uses: subosito/flutter-action@v1
@@ -61,7 +61,7 @@ jobs:
           flutter build web
           # npm i -g serve
           # serve .
-        working-directory: ./Raven/build/web
+        working-directory: ./
   # Deployment job
   deploy:
     environment:
