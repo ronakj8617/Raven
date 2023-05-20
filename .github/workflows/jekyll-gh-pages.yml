@@ -39,6 +39,8 @@ jobs:
           channel: 'stable'
 #          flutter-version: '3.3.10'  // uncomment this line if you want to use a specific version of Flutter
       - run: pwd
+      - run: echo "REPO_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+      - run: echo "${{ env.REPO_NAME }}"
       - run: ls
       - run: cd /home/runner/work/Raven/Raven/raven
       - run: ls
