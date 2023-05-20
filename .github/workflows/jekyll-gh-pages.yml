@@ -1,9 +1,12 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Build the website and the Android app, and deploy the website
 
 on:
   # Runs on pushes targeting the default branch
   push:
+    branches: ["release_1.0.2"]
+
+  pull_request:
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -11,7 +14,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -35,6 +38,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
+
       # Install Flutter command
       - uses: subosito/flutter-action@v1
         with:
@@ -42,25 +46,48 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
-      # Build Website
-      - name: Build Website
+      # Flutter stable channel
+      - name: Flutter stable channel
         run: |
-          #pwd
-          #cd raven
-          #pwd
           flutter channel stable
+
+      # Upgrade the version of Flutter
+      - name: Flutter upgrade
+        run: |          
           flutter upgrade
+
+      # Cleaning the solution
+      - name: Flutter clean
+        run: |          
           flutter clean
+
+      # Enable the web platform
+      - name: Enable Web
+        run: |          
           flutter config --enable-web
+
+      # Get Latest packages
+      - name: Retrieving packages
+        run: |          
           flutter pub get
-          # flutter build apk
-          pwd
+
           #Note: need to provide this path, otherwise it will just display a blank screen because the website won't have access to .the resources           
           #Note: using HTML as the renderer the site will be built as an HTML app and not CanvasKit
-          #flutter build web --base-href "/raven/build/web/"  --web-renderer html               
+          #flutter build web --base-href "/raven/build/web/"  --web-renderer html 
+
+      # Build web
+      - name: Build web
+        run: |            
           flutter build web
+
           # npm i -g serve
           # serve .
+
+      # Build apk
+      - name: Build apk
+        run: |            
+          flutter build apk
+
         working-directory: ./
   # Deployment job
   deploy:
