@@ -78,7 +78,7 @@ jobs:
       # Build web
       - name: Build web
         run: |            
-          flutter build web
+          flutter build web --no-tree-shake-icons
 
           # npm i -g serve
           # serve .
