@@ -1,21 +1,12 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:appwrite/appwrite.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:raven/home_screen.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
 
-
-import 'database_config.dart';
 import 'global variables/api_keys.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -26,15 +17,17 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late String otp;
-  late String verificationId, smsCode;
+  late String otp = '';
+  late String verificationId = '', smsCode = '';
+  late var userID = ID.unique();
+  @override
   late BuildContext context;
-  late String phoneNumber;
+  late String phoneNumber = '';
 
-  late Client client;  
+  late Client client;
   late var account;
   API_KEYS api_keys = API_KEYS();
-  
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,34 +35,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     WidgetsFlutterBinding.ensureInitialized();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => firebaseInit());
+    WidgetsBinding.instance.addPostFrameCallback((_) => appwriteInit());
   }
 
-  Future<void> firebaseInit() async {
-    
+  Future<void> appwriteInit() async {
     User user = User(id: 001, name: 'name', imageUrl: 'imageUrl');
     Message message = Message(
         sender: user, time: 'time', text: 'text', isLiked: true, unread: true);
-   
+
     client = Client()
-                .setEndpoint(api_keys.endPoint) // Your API Endpoint
-                .setProject(api_keys.project)
-                .setSelfSigned(status:api_keys.selfSigned);               // Your project ID
+        .setEndpoint(api_keys.endPoint) // Your API Endpoint
+        .setProject(api_keys.project)
+        .setSelfSigned(status: api_keys.selfSigned); // Your project ID
 
     account = Account(client);
 
-    final session = await account.createPhoneSession(
-        userId: ID.unique(),
-        phone: '+917283844571'
-      );
+    // final session = await account.createPhoneSession(
+    //     userId: ID.unique(),
+    //     phone: '$phoneNumber'
+    //   );
   }
 
   Future<void> sendOtp() async {
-   
+    var x = 5;
   }
 
   Future<void> verifyOtp() async {
-    
+    final session = await account.createPhoneSession(
+      userId: userID,
+      phone: phoneNumber,
+      otp: otpController.text,
+    );
+
+    // final session = await account.updatePhoneSession(
+    //     userId: userID,
+    //     secret: otpController.text
+    //   );
   }
 
   TextEditingController phoneNumberController = TextEditingController();
@@ -97,29 +98,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         textFieldController: phoneNumberController,
                         onInputChanged: (PhoneNumber phoneNumber) {
                           this.phoneNumber = phoneNumber.phoneNumber!;
+                          var c = phoneNumberController.text;
                         },
-                        selectorConfig: SelectorConfig(
+                        selectorConfig: const SelectorConfig(
                           selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                         ),
                         spaceBetweenSelectorAndTextField: 0,
                         ignoreBlank: false,
                         autoValidateMode: AutovalidateMode.disabled,
-                        selectorTextStyle: TextStyle(color: Colors.black),
-                        initialValue: PhoneNumber(
-                            isoCode:
-                                'IN'), //enter country code for the default value
+                        selectorTextStyle: const TextStyle(color: Colors.black),
+                        initialValue: PhoneNumber(isoCode: 'IN'),
+                        //enter country code for the default value
                         formatInput: false,
-                        keyboardType: TextInputType.numberWithOptions(
+                        keyboardType: const TextInputType.numberWithOptions(
                             signed: true, decimal: true),
-                        inputBorder: OutlineInputBorder(),
+                        inputBorder: const OutlineInputBorder(),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                TextButton(onPressed: sendOtp, child: Text('Send OTP')),
+                TextButton(onPressed: sendOtp, child: const Text('Send OTP')),
                 SizedBox(height: 30, width: 30, child: ListView()),
                 Column(
                   children: [
@@ -131,8 +132,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         length: 6,
                         obscureText: false,
                         hintCharacter: '0',
-                        hintStyle: TextStyle(
-                          color: const Color(0x36000000),
+                        hintStyle: const TextStyle(
+                          color: Color(0x36000000),
                         ),
                         animationType: AnimationType.fade,
                         pinTheme: PinTheme(
@@ -146,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           selectedFillColor: Colors.white,
                           activeColor: Colors.white,
                         ),
-                        animationDuration: Duration(milliseconds: 300),
+                        animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
                         controller: otpController,
                         onCompleted: (v) {
@@ -167,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Container(
                           child: TextButton(
                             onPressed: verifyOtp,
-                            child: Text('Verify the OTP',
+                            child: const Text('Verify the OTP',
                                 style: TextStyle(
                                   fontSize: 15,
                                   letterSpacing: 0.688,
@@ -188,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 showAlertDialog(BuildContext context, String title, String errorMessage) {
   // set up the button
   Widget okButton = TextButton(
-    child: Text("OK"),
+    child: const Text("OK"),
     onPressed: () {
       Navigator.of(context).pop();
     },

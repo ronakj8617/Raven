@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:raven/global%20variables/api_keys.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
+
 import './widgets/category_selector.dart';
 import './widgets/favourite_contacts.dart';
 import './widgets/recent_chats.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -71,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             iconSize: 30.0,
             color: Colors.white,
             onPressed: () {},
@@ -80,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: <Widget>[
-          CategorySelector(),
+          const CategorySelector(),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -90,8 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   topRight: Radius.circular(30.0),
                 ),
               ),
-              child: Column(
-                children: const <Widget>[
+              child: const Column(
+                children: <Widget>[
                   FavouriteContacts(),
                   RecentChats(),
                 ],

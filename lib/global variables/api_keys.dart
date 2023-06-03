@@ -4,26 +4,27 @@ class API_KEYS{
   late String project;
   late bool selfSigned;
 
-  API_KEYS.fromAPI_KEYS(API_KEYS api_keys){
-    this.endPoint = api_keys.endPoint;
-    this.project = api_keys.project;
-    this.selfSigned = api_keys.selfSigned;
+  API_KEYS.fromAPI_KEYS(API_KEYS api_keys) {
+    endPoint = api_keys.endPoint;
+    project = api_keys.project;
+    selfSigned = api_keys.selfSigned;
   }
 
-  API_KEYS(){
-    this.endPoint = 'https://cloud.appwrite.io/v1';
-    this.project = 'Raven8617CalgaryBuddhaLumbiniKapilva';
-    this.selfSigned = true;
-  }  
-  String getEndPoint(){
+  API_KEYS() {
+    endPoint = 'https://cloud.appwrite.io/v1';
+    project = 'Raven8617CalgaryBuddhaLumbiniKapilva';
+    selfSigned = true;
+  }
+
+  String getEndPoint() {
     return endPoint;
   }
 
-  String getProject(){
+  String getProject() {
     return project;
   }
 
-  bool getSelfSigned(){
+  bool getSelfSigned() {
     return selfSigned;
   }
 }

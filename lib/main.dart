@@ -2,15 +2,16 @@ import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:raven/home_screen.dart';
 import 'package:raven/signup_screen.dart';
-import 'database_config.dart';
+
 import 'global variables/api_keys.dart';
 import 'models/message_model.dart';
 import 'models/user_model.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: SignUpScreen(),
-    theme: ThemeData(primaryColor: Colors.red, primaryColorDark: Color(0xFFFEF9EB)),
+    home: const SignUpScreen(),
+    theme: ThemeData(
+        primaryColor: Colors.red, primaryColorDark: const Color(0xFFFEF9EB)),
     debugShowCheckedModeBanner: false,
   ));
 }
@@ -68,8 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() async {
     // TODO: implement initState
     super.initState();
-    
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const HomeScreen()));
 
     WidgetsFlutterBinding.ensureInitialized();
     WidgetsBinding.instance.addPostFrameCallback((_) => authenticationInit());
@@ -146,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 {
-    "githubPullRequests.ignoredPullRequestBranches": [
-        "main"
-    ]
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "main"
+  ],
+  "cmake.configureOnOpen": false
 }

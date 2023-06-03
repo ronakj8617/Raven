@@ -33,7 +33,6 @@
         },
         {
             "name": "Flutter (Chrome)",
-            "program": "lib/main.dart",
             "deviceId": "chrome",
             "flutterMode": "debug",
             "request": "launch",

@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:raven/chat_screen.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
-import 'package:path_provider/path_provider.dart';
 
 class RecentChats extends StatefulWidget {
   static List recentChatData = [];
@@ -43,48 +44,48 @@ class _RecentChatsState extends State<RecentChats> {
 
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
     // log('Parent: ' + appDocDirectory.parent.path);
-    new Directory(appDocDirectory.path + '/chats')
+    Directory('${appDocDirectory.path}/chats')
         .create(recursive: true)
         .then((Directory directory) {
       // print('Path of New Dir: ' + directory.path);
     });
 
-    var chatsFile = File(appDocDirectory.path + '/chats/chats.json');
-    var userFile = File(appDocDirectory.path + '/chats/users.json');
-    var messageFile = File(appDocDirectory.path + '/chats/messsages.json');
+    var chatsFile = File('${appDocDirectory.path}/chats/chats.json');
+    var userFile = File('${appDocDirectory.path}/chats/users.json');
+    var messageFile = File('${appDocDirectory.path}/chats/messsages.json');
 
-log(chatsFile.path);
+    log(chatsFile.path);
     if (userFile.exists() != true) {
       userFile.create();
-          List userList = [];
-    List chatsList = [];
-    List messageList = [];
+      List userList = [];
+      List chatsList = [];
+      List messageList = [];
 
-    for (var i = 0; i < chats.length; i++) {
-      Message tempMesage;
-      // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
+      for (var i = 0; i < chats.length; i++) {
+        Message tempMesage;
+        // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
 
-      tempMesage = Message(
-          sender: chats[i].sender,
-          time: chats[i].time,
-          text: chats[i].text,
-          isLiked: chats[i].isLiked,
-          unread: chats[i].unread);
+        tempMesage = Message(
+            sender: chats[i].sender,
+            time: chats[i].time,
+            text: chats[i].text,
+            isLiked: chats[i].isLiked,
+            unread: chats[i].unread);
 
-      User user = User(
-          id: chats[i].sender.id,
-          name: chats[i].sender.name,
-          imageUrl: chats[i].sender.imageUrl);
-      // chats.removeAt(i);
-      // log(chats[i].text);
-      // log(tempMesage.text.toString());
-      var encodeChats = tempMesage.toJson(tempMesage);
-      var encodeUsers = user.toJson(user);
-      // check.add(jsonEncode(test));
-      chatsList.add(encodeChats);
-      userList.add(encodeUsers);
+        User user = User(
+            id: chats[i].sender.id,
+            name: chats[i].sender.name,
+            imageUrl: chats[i].sender.imageUrl);
+        // chats.removeAt(i);
+        // log(chats[i].text);
+        // log(tempMesage.text.toString());
+        var encodeChats = tempMesage.toJson(tempMesage);
+        var encodeUsers = user.toJson(user);
+        // check.add(jsonEncode(test));
+        chatsList.add(encodeChats);
+        userList.add(encodeUsers);
 
-      // log(check);
+        // log(check);
 
       // chats.insert(chats.length, tempMesage);
       // chats[i] = tempMesage;
@@ -163,7 +164,7 @@ log(chatsFile.path);
 
     return Expanded(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
@@ -171,7 +172,7 @@ log(chatsFile.path);
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
@@ -200,12 +201,13 @@ log(chatsFile.path);
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  margin:
+                      const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
-                    borderRadius: BorderRadius.only(
+                    color: chat.unread ? const Color(0xFFFFEFEE) : Colors.white,
+                    borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       bottomRight: Radius.circular(20.0),
                     ),
@@ -219,24 +221,24 @@ log(chatsFile.path);
                             radius: 35.0,
                             backgroundImage: AssetImage(chat.sender.imageUrl),
                           ),
-                          SizedBox(width: 10.0),
+                          const SizedBox(width: 10.0),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 chat.sender.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               const SizedBox(height: 5.0),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.45,
                                 child: Text(
                                   chat.text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.blueGrey,
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.w600,
@@ -252,13 +254,13 @@ log(chatsFile.path);
                         children: <Widget>[
                           Text(
                             chat.time,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 5.0),
+                          const SizedBox(height: 5.0),
                           chat.unread
                               ? Container(
                                   width: 40.0,
@@ -268,7 +270,7 @@ log(chatsFile.path);
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   alignment: Alignment.center,
-                                  child: Text(
+                                  child: const Text(
                                     'NEW',
                                     style: TextStyle(
                                       color: Colors.white,
@@ -277,7 +279,7 @@ log(chatsFile.path);
                                     ),
                                   ),
                                 )
-                              : Text(''),
+                              : const Text(''),
                         ],
                       ),
                     ],
@@ -296,15 +298,15 @@ log(chatsFile.path);
 
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-    Directory(appDocDirectory.path + '/chats')
+    Directory('${appDocDirectory.path}/chats')
         .create(recursive: true)
         .then((Directory directory) {});
 
-    recentChatsFile = File(appDocDirectory.path + '/chats/chats.json');
+    recentChatsFile = File('${appDocDirectory.path}/chats/chats.json');
 
-    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+    directory = '${(await getApplicationDocumentsDirectory()).path}/chats';
 
-    file = File(directory + '/user.json');
+    file = File('$directory/user.json');
     // log(file.path);
     List recentChatData = [];
     recentChatData = await jsonDecode(recentChatsFile.readAsStringSync());
@@ -319,8 +321,9 @@ log(chatsFile.path);
     if (RecentChats.recentChatData.isNotEmpty) {
       RecentChats.recentChatDataCount = RecentChats.recentChatData.length;
       build(context);
-    } else
+    } else {
       initializeChatData();
+    }
 
     return RecentChats.recentChatDataCount;
   }

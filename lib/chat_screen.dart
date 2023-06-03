@@ -1,20 +1,20 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:raven/models/message_model.dart';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ChatScreen extends StatefulWidget {
   final User user;
   static List messageData = [];
   static int messageDataCount = 0;
-  ChatScreen({required this.user});
+
+  const ChatScreen({super.key, required this.user});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
   late String _jsonString;
 
   Future<String> get _localPath async {
-    final directory = Directory("/Users/ronak/Documents/TextApp" + kFileName);
+    final directory = Directory("/Users/ronak/Documents/TextApp$kFileName");
     // final directory = await getApplicationDocumentsDirectory();
 
     if (directory.exists() == false) {
@@ -57,11 +57,11 @@ class _ChatScreenState extends State<ChatScreen> {
     //final _filePath = await _localFile;
 
     //1. Create _newJson<Map> from input<TextField>
-    Map<String, dynamic> _newJson = {key: value};
-    print('1.(_writeJson) _newJson: $_newJson');
+    Map<String, dynamic> newJson = {key: value};
+    print('1.(_writeJson) _newJson: $newJson');
 
     //2. Update _json by adding _newJson<Map> -> _json<Map>
-    _json.addAll(_newJson);
+    _json.addAll(newJson);
     print('2.(_writeJson) _json(updated): $_json');
 
     //3. Convert _json ->_jsonString
@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  List _items = [];
+  final List _items = [];
 
   // Fetch content from the json file
   Future<void> readJson() async {
@@ -111,15 +111,15 @@ class _ChatScreenState extends State<ChatScreen> {
 
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
     // log('Parent: ' + appDocDirectory.parent.path);
-    new Directory(appDocDirectory.path + '/chats')
+    Directory('${appDocDirectory.path}/chats')
         .create(recursive: true)
         .then((Directory directory) {
       // print('Path of New Dir: ' + directory.path);
     });
 
-    var chatsFile = File(appDocDirectory.path + '/chats/chats.json');
-    var userFile = File(appDocDirectory.path + '/chats/users.json');
-    var messageFile = File(appDocDirectory.path + '/chats/messsages.json');
+    var chatsFile = File('${appDocDirectory.path}/chats/chats.json');
+    var userFile = File('${appDocDirectory.path}/chats/users.json');
+    var messageFile = File('${appDocDirectory.path}/chats/messsages.json');
 
     if (userFile.exists() != true) {
       userFile.create();
@@ -148,7 +148,7 @@ class _ChatScreenState extends State<ChatScreen> {
       Message tempMesage;
       // if (chats[i].sender.id == widget.user.id && chats[i].unread) {
       if (chats[i].sender.name == widget.user.name) {
-        log('Widget Username: ' + widget.user.name);
+        log('Widget Username: ${widget.user.name}');
         // log('message');
         tempMesage = Message(
             sender: chats[i].sender,
@@ -203,7 +203,7 @@ class _ChatScreenState extends State<ChatScreen> {
             isLiked: messages[i].isLiked,
             unread: messages[i].unread);
       }
-    
+
       // chats.removeAt(i);
       // log(chats[i].text);
       var encodeMessages = tempMesage.toJson(tempMesage);
@@ -283,25 +283,25 @@ class _ChatScreenState extends State<ChatScreen> {
   _buildMessage(Message message, bool isMe) {
     final Container msg = Container(
       margin: isMe
-          ? EdgeInsets.only(
+          ? const EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
               left: 80.0,
             )
-          : EdgeInsets.only(
+          : const EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
             ),
-      padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
       width: MediaQuery.of(context).size.width * 0.75,
       decoration: BoxDecoration(
-        color: isMe ? Theme.of(context).primaryColor : Color(0xFFFFEFEE),
+        color: isMe ? Theme.of(context).primaryColor : const Color(0xFFFFEFEE),
         borderRadius: isMe
-            ? BorderRadius.only(
+            ? const BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 bottomLeft: Radius.circular(15.0),
               )
-            : BorderRadius.only(
+            : const BorderRadius.only(
                 topRight: Radius.circular(15.0),
                 bottomRight: Radius.circular(15.0),
               ),
@@ -311,16 +311,16 @@ class _ChatScreenState extends State<ChatScreen> {
         children: <Widget>[
           Text(
             message.time,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.blueGrey,
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           Text(
             message.text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.blueGrey,
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
@@ -338,8 +338,8 @@ class _ChatScreenState extends State<ChatScreen> {
         msg,
         IconButton(
           icon: message.isLiked
-              ? Icon(Icons.favorite)
-              : Icon(Icons.favorite_border),
+              ? const Icon(Icons.favorite)
+              : const Icon(Icons.favorite_border),
           iconSize: 30.0,
           color: message.isLiked
               ? Theme.of(context).primaryColor
@@ -352,13 +352,13 @@ class _ChatScreenState extends State<ChatScreen> {
 
   _buildMessageComposer() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       height: 70.0,
       color: Colors.white,
       child: Row(
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.photo),
+            icon: const Icon(Icons.photo),
             iconSize: 25.0,
             color: Theme.of(context).primaryColor,
             onPressed: () {},
@@ -367,13 +367,13 @@ class _ChatScreenState extends State<ChatScreen> {
             child: TextField(
               textCapitalization: TextCapitalization.sentences,
               onChanged: (value) {},
-              decoration: InputDecoration.collapsed(
+              decoration: const InputDecoration.collapsed(
                 hintText: 'Send a message...',
               ),
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             iconSize: 25.0,
             color: Theme.of(context).primaryColor,
             onPressed: () {},
@@ -385,7 +385,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (ChatScreen.messageData.length == 0) {
+    if (ChatScreen.messageData.isEmpty) {
       initializeMessageData();
     } else {
       // print(ChatScreen.chatData);
@@ -395,7 +395,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text(
           widget.user.name,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
           ),
@@ -403,7 +403,7 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.more_horiz),
+            icon: const Icon(Icons.more_horiz),
             iconSize: 30.0,
             color: Colors.white,
             onPressed: () {},
@@ -416,7 +416,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: <Widget>[
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       // topLeft: Radius.circular(30.0),
@@ -424,13 +424,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                   ),
                   child: ListView.builder(
                     reverse: true,
-                    padding: EdgeInsets.only(top: 15.0),
+                    padding: const EdgeInsets.only(top: 15.0),
                     itemCount: ChatScreen.messageDataCount,
                     itemBuilder: (BuildContext context, int index) {
                       final User user = User(
@@ -468,16 +468,16 @@ class _ChatScreenState extends State<ChatScreen> {
     // log('getfile');
     Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-    new Directory(appDocDirectory.path + '/chats')
+    Directory('${appDocDirectory.path}/chats')
         .create(recursive: true)
         .then((Directory directory) {});
 
-    messagesFile = File(appDocDirectory.path + '/chats/messages.json');
+    messagesFile = File('${appDocDirectory.path}/chats/messages.json');
 
-    directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+    directory = '${(await getApplicationDocumentsDirectory()).path}/chats';
 
     setState(() {
-      file = File(directory + '/messages.json');
+      file = File('$directory/messages.json');
     });
 
     List messageData = [];
@@ -488,10 +488,11 @@ class _ChatScreenState extends State<ChatScreen> {
     if (ChatScreen.messageData == null) {
       initializeMessageData();
     }
-    if (ChatScreen.messageData.isNotEmpty)
+    if (ChatScreen.messageData.isNotEmpty) {
       ChatScreen.messageDataCount = ChatScreen.messageData.length;
-    else
+    } else {
       initializeMessageData();
+    }
 
     return ChatScreen.messageDataCount;
   }

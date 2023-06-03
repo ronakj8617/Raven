@@ -1,15 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 // import 'package:Raven/models/message_model.dart';
-import 'package:raven/models/message_model.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../models/user_model.dart';
 
 class FavouriteContacts extends StatefulWidget {
   static List userData = [];
@@ -43,15 +39,15 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
 
     initializeUserData();
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Favorite Contacts',
                   style: TextStyle(
                     color: Colors.blueGrey,
@@ -61,7 +57,7 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.more_horiz,
                   ),
                   iconSize: 30.0,
@@ -71,10 +67,10 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 120.0,
             child: ListView.builder(
-              padding: EdgeInsets.only(left: 10.0),
+              padding: const EdgeInsets.only(left: 10.0),
               scrollDirection: Axis.horizontal,
               itemCount: FavouriteContacts.userData.length,
               itemBuilder: (BuildContext context, int index) {
@@ -88,7 +84,7 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                   // ),
 
                   child: Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Column(
                       children: <Widget>[
                         CircleAvatar(
@@ -96,10 +92,10 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
                           backgroundImage: AssetImage(FavouriteContacts
                               .userData[index]['sender']['imageUrl']),
                         ),
-                        SizedBox(height: 6.0),
+                        const SizedBox(height: 6.0),
                         Text(
                           FavouriteContacts.userData[index]['sender']['name'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
@@ -122,27 +118,25 @@ class _FavouriteContactsState extends State<FavouriteContacts> {
     if (kIsWeb) {
       // Set web-specific directory
     } else {
-      
       Directory appDocDirectory = await getApplicationDocumentsDirectory();
 
-      Directory(appDocDirectory.path + '/chats')
+      Directory('${appDocDirectory.path}/chats')
           .create(recursive: true)
           .then((Directory directory) {
         // print('Path of New Dir: ' + directory.path);
       });
 
-      chatsFile = File(appDocDirectory.path + '/chats/chats.json');
-      userFile = File(appDocDirectory.path + '/chats/users.json');
+      chatsFile = File('${appDocDirectory.path}/chats/chats.json');
+      userFile = File('${appDocDirectory.path}/chats/users.json');
 
-     
-      directory = ((await getApplicationDocumentsDirectory()).path) + '/chats';
+      directory = '${(await getApplicationDocumentsDirectory()).path}/chats';
       // log(directory);
 
       setState(() {
         // file = Directory("$directory")
         //     .listSync(); //use your folder name insted of resume.
 
-        file = File(directory + '/user.json');
+        file = File('$directory/user.json');
       });
       // log(test);
 
