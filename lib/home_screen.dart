@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:raven/global%20variables/api_keys.dart';
 import 'package:raven/models/message_model.dart';
 import 'package:raven/models/user_model.dart';
+import 'package:raven/temp%20pages/temp_main.dart';
 
 import './widgets/category_selector.dart';
 import './widgets/favourite_contacts.dart';
 import './widgets/recent_chats.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,6 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
 
+  //   Navigator.push(context,
+  //     MaterialPageRoute(builder: (context) => const TempMain()),
+  // );
     WidgetsFlutterBinding.ensureInitialized();
     WidgetsBinding.instance.addPostFrameCallback((_) => authenticationInit());
 

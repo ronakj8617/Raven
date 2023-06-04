@@ -5,53 +5,322 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f640dc9-594b-4484-836a-d9300cbe3519" name="Changes" comment="Adding hooks">
-      <change afterPath="$PROJECT_DIR$/git_hooks/commitMessage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lefthook.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generated/intl/messages_all.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generated/intl/messages_en.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/generated/l10n.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/l10n/intl_en.arb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/apple_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/github_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/google_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/twitter_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/4c047974a210d020bc36639e340fe5a6.cache.dill.track.dill" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/4e44884cc12c9815120c126d719c75ca/_composite.stamp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/4e44884cc12c9815120c126d719c75ca/gen_dart_plugin_registrant.stamp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/4e44884cc12c9815120c126d719c75ca/gen_localizations.stamp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/.last_build_id" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.smcbin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/FontManifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/fonts/MaterialIcons-Regular.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/fluttertoast/assets/toastify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/fluttertoast/assets/toastify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/af.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ag.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/al.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/am.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/an.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ao.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/aq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/as.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/at.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/au.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/aw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ax.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/az.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ba.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/be.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/br.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/by.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/bz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ca.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ci.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ck.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/co.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/cz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/de.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/dj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/dk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/dm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/do.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/dz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ec.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/eg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/eh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/er.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/es.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/et.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/eu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/fr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ga.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gb-eng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gb-nir.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gb-sct.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gb-wls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/gy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/hk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/hm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/hn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/hr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ht.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/hu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/id.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/il.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/im.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/in.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/io.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/iq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ir.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/is.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/it.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/je.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/jm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/jo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/jp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ke.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ki.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/km.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ky.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/kz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/la.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/li.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ls.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/lv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ly.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ma.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/md.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/me.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ml.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ms.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/my.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/mz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/na.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ne.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ni.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/np.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/nz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/om.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ph.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ps.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/pw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/py.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/qa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/re.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/rs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/rw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/se.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/si.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/so.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/st.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/sz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/td.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/th.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/to.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/tz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ua.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ug.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/um.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/us.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/uy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/uz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/va.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/vc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ve.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/vg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/vi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/vn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/vu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/wf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ws.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/xk.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/ye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/yt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/za.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/zm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/intl_phone_number_input/assets/flags/zw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/libphonenumber_plugin/assets/js/libphonenumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/libphonenumber_plugin/assets/js/stringbuffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/libphonenumber_plugin/js/libphonenumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/libphonenumber_plugin/js/stringbuffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/flutter_assets/shaders/ink_sparkle.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/Flutter.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/PhoneNumberKit.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/Pods-Runner.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/Pods-RunnerTests.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/Toast.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/device_info_plus.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/flutter_web_auth_2.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/fluttertoast.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/libphonenumber_plugin.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/package_info_plus.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/path_provider_foundation.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/ios/Pods.build/Release-iphonesimulator/url_launcher_ios.build/dgph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/last_build_run.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/.last_build_id" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/canvaskit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/canvaskit.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/chromium/canvaskit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/chromium/canvaskit.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/skwasm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/skwasm.wasm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/canvaskit/skwasm.worker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/web/flutter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/appwrite/auth_api.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/appwrite/database_api.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/constants/constants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/account_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/login_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/messages_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/register_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/tabs_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp pages/temp_main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Raven.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Raven.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/12caba223d40c44f181b0525774d369a/_composite.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/12caba223d40c44f181b0525774d369a/gen_dart_plugin_registrant.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/12caba223d40c44f181b0525774d369a/gen_localizations.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/355e8b6ead1176d81302d6b3fd8a8d38/_composite.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/355e8b6ead1176d81302d6b3fd8a8d38/gen_dart_plugin_registrant.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/355e8b6ead1176d81302d6b3fd8a8d38/gen_localizations.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/677e2d245be15e91060c59724a2ce4d9/_composite.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/677e2d245be15e91060c59724a2ce4d9/gen_dart_plugin_registrant.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/677e2d245be15e91060c59724a2ce4d9/gen_localizations.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/e0fa19be49118dede15c46d21727b916/_composite.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/e0fa19be49118dede15c46d21727b916/gen_dart_plugin_registrant.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/e0fa19be49118dede15c46d21727b916/gen_localizations.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/.last_build_id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/canvaskit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/canvaskit.wasm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/chromium/canvaskit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/chromium/canvaskit.wasm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/skwasm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/skwasm.wasm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/canvaskit/skwasm.worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/flutter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/RunnerTests/RunnerTests.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/chat_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chat_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/global variables/api_keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/global variables/api_keys.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/intl/messages_all.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/intl/messages_all.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/intl/messages_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/intl/messages_en.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/l10n.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/l10n.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/signup_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/signup_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/category_selector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/category_selector.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/favourite_contacts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/favourite_contacts.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/recent_chats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/recent_chats.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -70,6 +339,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -114,11 +386,22 @@
     "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/ronak/Ronak/GitHub Repos/Raven",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "last_opened_file_path": "/Users/ronak/Ronak/GitHub Repos/raven/assets",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
       <module name="Raven" />
@@ -136,6 +419,14 @@
       <option name="presentableId" value="Default" />
       <updated>1684565290225</updated>
     </task>
+    <task id="LOCAL-00001" summary="Adding hooks">
+      <created>1685772791024</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685772791024</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -164,21 +455,5 @@
     <option name="LAST_COMMIT_MESSAGE" value="Adding hooks" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/signup_screen.dart</url>
-          <line>35</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/signup_screen.dart</url>
-          <line>122</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
